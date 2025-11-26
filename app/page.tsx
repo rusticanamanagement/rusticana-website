@@ -8,18 +8,28 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    // Safe access — no crash if env vars are missing
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!url || !key) {
+      console.error('Missing Supabase env vars');
+      setLoading(false);
+      return;
+    }
+
+    const supabase = createClient(url, key);
 
     supabase
       .from('menu_items')
       .select('*')
-      // This line accepts both real true AND the string "true"
-      .in('available', [true, 'true'])
+      .in('available', [true, 'true'])   // works with both boolean and string
       .then(({ data }) => {
         setItems(data || []);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Supabase error:', err);
         setLoading(false);
       });
   }, []);
@@ -32,10 +42,10 @@ export default function Home() {
         {loading ? (
           <p className="text-3xl text-amber-900">Loading menu...</p>
         ) : items.length === 0 ? (
-          <p className="text-xl text-gray-600">No items found</p>
+          <p className="text-2xl text-gray-600">No items found – check Supabase table</p>
         ) : (
           <div className="grid md:grid-cols-3 gap-12">
-            {items.map((item) => (
+            {items.map(item => (
               <div key={item.id} className="bg-white rounded-3xl shadow-2xl p-12 hover:scale-105 transition">
                 <h3 className="text-3xl font-bold text-gray-800">{item.name}</h3>
                 <p className="text-xl text-gray-600 mt-4">{item.category}</p>
