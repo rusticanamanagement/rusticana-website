@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 py-20">
       <div className="max-w-6xl mx-auto text-center px-4">
-        <h1 className="text-7xl font-bold text-amber-900 mb-16">Rusticána</h1>
+        <h1 className="text-7xl font-bold text-amber-900 mb-16">Rusticana</h1>
         <div className="grid md:grid-cols-3 gap-12">
           {items.map(item => (
             <div key={item.id} className="bg-white rounded-3xl shadow-2xl p-12 hover:scale-105 transition">
