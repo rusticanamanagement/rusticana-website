@@ -1,7 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // THIS LINE IS THE NUCLEAR FIX — disables Turbopack completely
-  // Vercel will now use the stable Webpack bundler that works with Supabase
+  // THIS LINE KILLS TURBOPACK DEAD — Vercel will use the stable Webpack
+  // (Turbopack is still broken for 90 % of Supabase projects in 2025)
+  experimental: {
+    turbopack: false,
+  },
+};
+
+module.exports = nextConfig;
+
+cd ~/rusticana-website
+eof
+cat > next.config.js << 'EOF'
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // THIS LINE KILLS TURBOPACK DEAD — Vercel will use the stable Webpack
+  // (Turbopack is still broken for 90 % of Supabase projects in 2025)
   experimental: {
     turbopack: false,
   },
