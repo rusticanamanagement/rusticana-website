@@ -8,7 +8,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Safe access — no crash if env vars are missing
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -23,13 +22,15 @@ export default function Home() {
     supabase
       .from('menu_items')
       .select('*')
-      .in('available', [true, 'true'])   // works with both boolean and string
-      .then(({ data }) => {
+      .in('available', [true, 'true'])
+      .then(({ data, error }) => {
+        if (error) throw error;
         setItems(data || []);
-        setLoading(false);
       })
-      .catch(err => {
+      .catch((err: any) => {
         console.error('Supabase error:', err);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -38,7 +39,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 py-20">
       <div className="max-w-6xl mx-auto text-center px-4">
         <h1 className="text-7xl font-bold text-amber-900 mb-16">Rusticána</h1>
-        
+
         {loading ? (
           <p className="text-3xl text-amber-900">Loading menu...</p>
         ) : items.length === 0 ? (
