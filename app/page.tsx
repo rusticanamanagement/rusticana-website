@@ -8,20 +8,16 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!url || !key) {
-      setLoading(false);
-      return;
-    }
-
-    const supabase = createClient(url, key);
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
 
     supabase
       .from('menu_items')
       .select('*')
-      .eq('available', true)
+      // This line accepts both real true AND the string "true"
+      .in('available', [true, 'true'])
       .then(({ data }) => {
         setItems(data || []);
         setLoading(false);
@@ -36,7 +32,7 @@ export default function Home() {
         {loading ? (
           <p className="text-3xl text-amber-900">Loading menu...</p>
         ) : items.length === 0 ? (
-          <p className="text-xl text-gray-600">No items found — check Supabase table</p>
+          <p className="text-xl text-gray-600">No items found</p>
         ) : (
           <div className="grid md:grid-cols-3 gap-12">
             {items.map((item) => (
