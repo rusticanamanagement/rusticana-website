@@ -19,20 +19,22 @@ export default function Home() {
 
     const supabase = createClient(url, key);
 
-    supabase
-      .from('menu_items')
-      .select('*')
-      .in('available', [true, 'true'])
-      .then(({ data, error }) => {
+    // async/await = no more TypeScript catch/finally problems
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from('menu_items')
+          .select('*')
+          .in('available', [true, 'true']);
+
         if (error) throw error;
         setItems(data || []);
-      })
-      .catch((err: any) => {
+      } catch (err) {
         console.error('Supabase error:', err);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    })();
   }, []);
 
   return (
@@ -43,7 +45,7 @@ export default function Home() {
         {loading ? (
           <p className="text-3xl text-amber-900">Loading menu...</p>
         ) : items.length === 0 ? (
-          <p className="text-2xl text-gray-600">No items found – check Supabase table</p>
+          <p className="text-2xl text-gray-600">No items found</p>
         ) : (
           <div className="grid md:grid-cols-3 gap-12">
             {items.map(item => (
