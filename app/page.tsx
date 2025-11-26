@@ -3,26 +3,28 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+// Graceful fallback for build time (no crash if vars missing)
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase env vars');
+  console.warn('Supabase env vars missing during build — using fallback menu');
 }
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabase = createClient(supabaseUrl!, supabaseAnonKey!);
 
 export default async function Home() {
-  let items = [];
+  let items = []; // Fallback empty array
 
-  try {
-    const { data } = await supabase
-      .from('menu_items')
-      .select('*')
-      .eq('available', true)
-      .order('category');
-    
-    items = data || [];
-  } catch (error) {
-    console.error('Supabase fetch error:', error);
-    // Fallback: empty menu during build if DB issue
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      const { data } = await supabase
+        .from('menu_items')
+        .select('*')
+        .eq('available', true)
+        .order('category');
+      items = data || [];
+    } catch (error) {
+      console.error('Supabase fetch error during build:', error);
+      // Continue with empty items — no crash
+    }
   }
 
   return (
@@ -30,7 +32,7 @@ export default async function Home() {
       <div className="max-w-6xl mx-auto text-center px-4">
         <h1 className="text-7xl font-bold text-amber-900 mb-16">Rusticána</h1>
         {items.length === 0 ? (
-          <p className="text-xl text-gray-600">Menu loading...</p>
+          <p className="text-xl text-gray-600">Menu loading... (check env vars in Vercel)</p>
         ) : (
           <div className="grid md:grid-cols-3 gap-12">
             {items.map((item: any) => (
