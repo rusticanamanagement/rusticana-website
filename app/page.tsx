@@ -10,10 +10,15 @@ const supabase = createClient(
 );
 
 export default function Home() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
-    supabase.from('categories').select('*').then(({ data }) => setCategories(data || []));
+    supabase
+      .from('categories')
+      .select('*')
+      .then(({ data }) => {
+        setCategories(data ?? []);
+      });
   }, []);
 
   const deals = [
@@ -70,7 +75,7 @@ export default function Home() {
           <h2 className="text-5xl font-bold text-center mb-12 text-red-600">Browse Menu</h2>
           <ul className="space-y-6 text-3xl text-left">
             {categories.length === 0 ? (
-              <li>No categories yet — add them in Supabase</li>
+              <li className="text-gray-600">Loading categories...</li>
             ) : (
               categories.map((cat: any) => (
                 <li key={cat.id}>
