@@ -13,12 +13,7 @@ export default function Home() {
   const [categories, setCategories] = useState<any[]>([]);
 
   useEffect(() => {
-    supabase
-      .from('categories')
-      .select('*')
-      .then(({ data }) => {
-        setCategories(data ?? []);
-      });
+    supabase.from('categories').select('*').then(({ data }) => setCategories(data ?? []));
   }, []);
 
   const deals = [
@@ -29,10 +24,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-red-50">
-      {/* Top Nav */}
-      <nav className="bg-red-600 text-white p-4 flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Rusticana</h1>
-        <div className="space-x-6 text-lg">
+      {/* Slim red header — only 16 units tall (64px) */}
+      <nav className="bg-red-600 text-white py-4 px-6 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+        <h1 className="text-2xl md:text-3xl font-bold">Rusticana</h1>
+        <div className="space-x-6 text-base md:text-lg">
           <Link href="/deals" className="hover:underline">Deals</Link>
           <Link href="/rewards" className="hover:underline">Rewards</Link>
           <Link href="/locations" className="hover:underline">Locations</Link>
@@ -40,7 +35,7 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="bg-red-600 text-white text-center py-24">
+      <section className="bg-red-600 text-white text-center py-20">
         <h1 className="text-6xl md:text-8xl font-bold mb-8">Start your order</h1>
         <div className="flex justify-center gap-10 mb-8">
           <Link href="/delivery" className="bg-white text-red-600 px-10 py-5 rounded-full text-3xl font-bold hover:bg-gray-100">
@@ -53,7 +48,7 @@ export default function Home() {
         <p className="text-3xl">Order Online</p>
       </section>
 
-      {/* Deals */}
+      {/* Deals, Menu, Footer — unchanged */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-12 text-red-600">Limited Time Offers</h2>
@@ -69,7 +64,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Browse Menu */}
       <section className="py-16 bg-red-50">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-12 text-red-600">Browse Menu</h2>
@@ -89,7 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-red-600 text-white py-10 text-center">
         <p className="text-xl">© 2025 Rusticana • All rights reserved</p>
       </footer>
