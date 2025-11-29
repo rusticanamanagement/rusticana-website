@@ -19,8 +19,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* GREEN header (Italian flag top) */}
-      <nav className="bg-green-600 text-white py-3 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+      {/* Red header */}
+      <nav className="bg-red-600 text-white py-3 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
         <div className="flex items-center gap-4">
           <Image src="/logo.png" alt="Rusticana" width={60} height={60} className="rounded-full border-4 border-white" />
           <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', serif", letterSpacing: '0.1em' }}>
@@ -37,41 +37,51 @@ export default function Home() {
       {/* White space */}
       <div className="h-12 bg-white"></div>
 
-      {/* RED ORDER NOW bar (Italian flag bottom) */}
-      <div className="bg-red-600 text-white text-center py-5">
+      {/* Green ORDER NOW bar */}
+      <div className="bg-green-600 text-white text-center py-5">
         <div className="max-w-4xl mx-auto flex justify-center items-center gap-10">
           <span className="text-4xl font-bold">ORDER NOW</span>
           <div className="flex gap-8">
-            <Link href="/delivery" className="bg-white text-red-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
+            <Link href="/delivery" className="bg-white text-green-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
               Delivery
             </Link>
-            <Link href="/carryout" className="bg-white text-red-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
+            <Link href="/carryout" className="bg-white text-green-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
               Carryout
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Your pizza oven hero */}
-      <div className="relative h-96 md:h-screen max-h-screen overflow-hidden">
-        <Image src="/pizzaoven.jpg" alt="Rusticana" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h2 className="text-6xl md:text-9xl font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
-            <p className="text-3xl md:text-5xl drop-shadow-lg">Hand-crafted daily with love</p>
+      {/* Hero image in a separate white box — exactly like Domino’s */}
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div className="relative h-96 md:h-screen max-h-screen">
+            <Image
+              src="/pizzaoven.jpg"
+              alt="Rusticana Pizza"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div className="text-center text-white">
+                <h2 className="text-6xl md:text-9xl font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
+                <p className="text-3xl md:text-5xl drop-shadow-lg">Hand-crafted daily with love</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Rest of page */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-6xl font-bold text-red-600 mb-12">Limited Time Offers</h2>
           {/* deals */}
         </div>
       </section>
 
-      <footer className="bg-green-600 text-white py-12 text-center">
+      <footer className="bg-red-600 text-white py-12 text-center">
         <p className="text-2xl">© 2025 Rusticana Pizza • All rights reserved</p>
       </footer>
     </div>
