@@ -37,9 +37,9 @@ export default function Home() {
       {/* White space */}
       <div className="h-12 bg-white"></div>
 
-      {/* Green ORDER NOW bar */}
+      {/* Green ORDER NOW bar — same width as image box */}
       <div className="bg-green-600 text-white text-center py-5">
-        <div className="max-w-4xl mx-auto flex justify-center items-center gap-10">
+        <div className="max-w-6xl mx-auto flex justify-center items-center gap-10">
           <span className="text-4xl font-bold">ORDER NOW</span>
           <div className="flex gap-8">
             <Link href="/delivery" className="bg-white text-green-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
@@ -52,10 +52,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero image in a separate white box — exactly like Domino’s */}
+      {/* Hero image box — wider + slimmer, exactly like Domino’s */}
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="relative h-96 md:h-screen max-h-screen">
+          <div className="relative h-96 md:h-[600px] lg:h-[700px]">
             <Image
               src="/pizzaoven.jpg"
               alt="Rusticana Pizza"
@@ -65,7 +65,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
               <div className="text-center text-white">
-                <h2 className="text-6xl md:text-9xl font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
+                <h2 className="text-6xl md:text-8xl font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
                 <p className="text-3xl md:text-5xl drop-shadow-lg">Hand-crafted daily with love</p>
               </div>
             </div>
@@ -75,9 +75,8 @@ export default function Home() {
 
       {/* Rest of page */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-6xl font-bold text-red-600 mb-12">Limited Time Offers</h2>
-          {/* deals */}
         </div>
       </section>
 
