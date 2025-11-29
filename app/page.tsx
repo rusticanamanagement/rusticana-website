@@ -23,7 +23,7 @@ export default function Home() {
       <nav className="bg-red-600 text-white py-3 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
         <div className="flex items-center gap-4">
           <Image src="/logo.png" alt="Rusticana" width={60} height={60} className="rounded-full border-4 border-white" />
-          <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', serif", letterSpacing: '0.1em' }}>
+          <h1 className="text-4xl md:text-5xl metro-beardy font-bold tracking-wider" style={{ fontFamily: "'Metro Beardy', serif", letterSpacing: '0.1em' }}>
             RUSTICANA PIZZA
           </h1>
         </div>
@@ -40,12 +40,12 @@ export default function Home() {
       <div className="px-4 md:px-8 lg:px-16">
         <div className="bg-green-600 text-white text-center py-6 rounded-3xl shadow-2xl">
           <div className="flex justify-center items-center gap-12">
-            <span className="text-4xl md:text-5xl font-bold">ORDER NOW</span>
+            <span className="text-4xl md:text-5xl metro-beardy font-bold">ORDER NOW</span>
             <div className="flex gap-10">
-              <Link href="/delivery" className="bg-white text-green-600 px-14 py-6 rounded-full text-3xl md:text-4xl font-bold hover:bg-gray-100 shadow-xl">
+              <Link href="/delivery" className="bg-white text-green-600 px-14 py-6 rounded-full text-3xl md:text-4xl metro-beardy font-bold hover:bg-gray-100 shadow-xl">
                 Delivery
               </Link>
-              <Link href="/carryout" className="bg-white text-green-600 px-14 py-6 rounded-full text-3xl md:text-4xl font-bold hover:bg-gray-100 shadow-xl">
+              <Link href="/carryout" className="bg-white text-green-600 px-14 py-6 rounded-full text-3xl md:text-4xl metro-beardy font-bold hover:bg-gray-100 shadow-xl">
                 Carryout
               </Link>
             </div>
@@ -66,7 +66,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
               <div className="text-center text-white">
-                <h2 className="text-6xl md:text-9xl font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
+                <h2 className="text-6xl md:text-9xl metro-beardy font-bold mb-6 drop-shadow-2xl">FRESH FROM THE OVEN</h2>
                 <p className="text-3xl md:text-5xl drop-shadow-lg">Hand-crafted daily with love</p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
       {/* Rest of page */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-6xl font-bold text-red-600 mb-12">Limited Time Offers</h2>
+          <h2 className="text-6xl metro-beardy font-bold text-red-600 mb-12">Limited Time Offers</h2>
         </div>
       </section>
 
