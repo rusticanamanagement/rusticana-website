@@ -23,7 +23,7 @@ export default function Home() {
       <nav className="bg-red-600 text-white py-3 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
         <div className="flex items-center gap-4">
           <Image src="/logo.png" alt="Rusticana" width={60} height={60} className="rounded-full border-4 border-white" />
-          <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', Georgia, serif", letterSpacing: '0.1em' }}>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', serif", letterSpacing: '0.1em' }}>
             RUSTICANA PIZZA
           </h1>
         </div>
@@ -36,7 +36,7 @@ export default function Home() {
 
       <div className="h-12 bg-white"></div>
 
-      {/* Green ORDER NOW bar — same width as hero */}
+      {/* Green ORDER NOW bar — matches hero width */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-green-600 text-white text-center py-6 rounded-3xl shadow-2xl">
           <div className="flex justify-center items-center gap-12">
@@ -74,7 +74,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="bg-red-600 text-white py-12 text-center">
         <p className="text-2xl">© 2025 Rusticana Pizza • All rights reserved</p>
       </footer>
