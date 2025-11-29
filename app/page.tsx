@@ -37,9 +37,9 @@ export default function Home() {
       {/* White space */}
       <div className="h-12 bg-white"></div>
 
-      {/* Green ORDER NOW bar — same width as hero */}
+      {/* Green ORDER NOW bar — full width */}
       <div className="bg-green-600 text-white text-center py-5">
-        <div className="max-w-7xl mx-auto flex justify-center items-center gap-10">
+        <div className="max-w-none flex justify-center items-center gap-10">
           <span className="text-4xl font-bold">ORDER NOW</span>
           <div className="flex gap-8">
             <Link href="/delivery" className="bg-white text-green-600 px-12 py-5 rounded-full text-3xl font-bold hover:bg-gray-100 shadow-xl">
@@ -52,10 +52,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* WIDER & SLIMMER hero box — exact Domino's 2025 ratio */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="relative h-96 md:h-[540px]">
+      {/* MAX-WIDE & SLIM hero box — full browser width */}
+      <div className="w-full px-0 py-12">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mx-4 md:mx-8 lg:mx-16">
+          <div className="relative h-80 md:h-96 lg:h-[520px]">
             <Image
               src="/pizzaoven.jpg"
               alt="Rusticana Pizza"
