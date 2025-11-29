@@ -3,6 +3,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const supabase = createClient(
   'https://lbpeeqwgxmzyplndivmj.supabase.co',
@@ -24,11 +25,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-red-50">
-      {/* Slim red header with Bonaro+9 font */}
-      <nav className="bg-red-600 text-white py-4 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', Georgia, serif", letterSpacing: '0.1em' }}>
-          RUSTICANA PIZZA
-        </h1>
+      {/* Slim red header with LOGO + TEXT */}
+      <nav className="bg-red-600 text-white py-3 px-8 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+        <div className="flex items-center gap-4">
+          {/* Your logo — replace public/logo.png with your real one anytime */}
+          <Image
+            src="/logo.png"
+            alt="Rusticana Logo"
+            width={60}
+            height={60}
+            className="rounded-full border-4 border-white shadow-xl"
+          />
+          <h1 className="text-4xl md:text-5xl font-bold tracking-wider" style={{ fontFamily: "'Bona Nova SC', Georgia, serif", letterSpacing: '0.1em' }}>
+            RUSTICANA PIZZA
+          </h1>
+        </div>
         <div className="space-x-8 text-lg">
           <Link href="/deals" className="hover:underline">Deals</Link>
           <Link href="/rewards" className="hover:underline">Rewards</Link>
@@ -36,7 +47,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero */}
+      {/* Rest of the page unchanged */}
       <section className="bg-red-600 text-white text-center py-32">
         <h2 className="text-6xl md:text-8xl font-bold mb-8">Start your order</h2>
         <div className="flex justify-center gap-12 mb-8">
