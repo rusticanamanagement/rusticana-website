@@ -34,6 +34,7 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* White space */}
       <div className="h-12 bg-white"></div>
 
       {/* Green ORDER NOW bar */}
@@ -74,12 +75,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-6xl font-bold text-red-600 mb-12">Limited Time Offers</h2>
-        </div>
-      </section>
-
+      {/* Footer */}
       <footer className="bg-red-600 text-white py-12 text-center">
         <p className="text-2xl">© 2025 Rusticana Pizza • All rights reserved</p>
       </footer>
