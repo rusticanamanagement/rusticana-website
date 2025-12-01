@@ -36,7 +36,7 @@ export default function Home() {
 
       <div className="h-12 bg-white"></div>
 
-      {/* Green ORDER NOW bar — matches hero width */}
+      {/* Green ORDER NOW bar */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-green-600 text-white text-center py-6 rounded-3xl shadow-2xl">
           <div className="flex justify-center items-center gap-12">
@@ -73,6 +73,12 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-6xl font-bold text-red-600 mb-12">Limited Time Offers</h2>
+        </div>
+      </section>
 
       <footer className="bg-red-600 text-white py-12 text-center">
         <p className="text-2xl">© 2025 Rusticana Pizza • All rights reserved</p>
